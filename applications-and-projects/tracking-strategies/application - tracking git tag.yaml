@@ -1,24 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
-  name: demo-shared-resources
+metadata:
+  name: track-git-tag
   namespace: argocd
 spec:
   destination:
-    namespace: guestbook-demo-project
+    namespace: track-git-tag
     server: "https://kubernetes.default.svc"
   project: default
-  source: 
+  source:
     path: guestbook
-    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
-    targetRevision: master
+    repoURL: "https://github.com/jagscol/argocd-example-apps.git"
+    targetRevision: v1
     directory:
       recurse: true
   syncPolicy:
     automated: {}
     syncOptions:
       - CreateNamespace=true
-      - FailOnSharedResource=true
-      
-
-    

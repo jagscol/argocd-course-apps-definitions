@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
-  name: selective-sync
+metadata:
+  name: demo-shared-resources
   namespace: argocd
 spec:
   destination:
-    namespace: selective-sync
+    namespace: guestbook-demo-project
     server: "https://kubernetes.default.svc"
   project: default
-  source: 
-    path: sync-options/selective-sync
-    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+  source:
+    path: guestbook
+    repoURL: "https://github.com/jagscol/argocd-example-apps.git"
     targetRevision: master
     directory:
       recurse: true
@@ -18,6 +18,4 @@ spec:
     automated: {}
     syncOptions:
       - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
-
-    
+      - FailOnSharedResource=true

@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
+metadata:
   name: guestbook-staging
   namespace: argocd
-spec: 
-  destination: 
+spec:
+  destination:
     namespace: guestbook-staging
     server: "https://c50189b1-bb18-4a46-b772-b045e0ed4fde.k8s.ondigitalocean.com"
   project: default
-  source: 
+  source:
     path: guestbook
-    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    repoURL: "https://github.com/jagscol/argocd-example-apps.git"
     targetRevision: master
   syncPolicy:
     syncOptions:

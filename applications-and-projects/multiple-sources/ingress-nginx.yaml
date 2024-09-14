@@ -14,8 +14,8 @@ spec:
       targetRevision: 4.6.1
       helm:
         valueFiles:
-        - $values/ingress-nginx/values.yaml
-    - repoURL: https://github.com/mabusaa/argocd-example-apps.git
+          - $values/ingress-nginx/values.yaml
+    - repoURL: https://github.com/jagscol/argocd-example-apps.git
       ref: values
       targetRevision: master
   syncPolicy:

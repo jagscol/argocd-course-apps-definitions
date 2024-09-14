@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
+metadata:
   name: diffing-customization-demo
   namespace: argocd
-spec: 
+spec:
   destination:
     namespace: diffing-customization-demo
     server: "https://kubernetes.default.svc"
   project: default
-  source: 
+  source:
     path: guestbook-with-sub-directories
-    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    repoURL: "https://github.com/jagscol/argocd-example-apps.git"
     targetRevision: master
     directory:
       recurse: true
@@ -22,7 +22,4 @@ spec:
     - group: apps
       kind: Deployment
       jsonPointers:
-      - /spec/replicas
-
-
-    
+        - /spec/replicas

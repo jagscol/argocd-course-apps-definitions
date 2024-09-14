@@ -1,22 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
-  name: track-git-tag
+metadata:
+  name: replace-resources
   namespace: argocd
 spec:
   destination:
-    namespace: track-git-tag
+    namespace: replace-resources
     server: "https://kubernetes.default.svc"
   project: default
-  source: 
-    path: guestbook
-    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
-    targetRevision: v1
+  source:
+    path: sync-options/replace
+    repoURL: "https://github.com/jagscol/argocd-example-apps.git"
+    targetRevision: master
     directory:
       recurse: true
   syncPolicy:
     automated: {}
     syncOptions:
       - CreateNamespace=true
-
-    
+      - Replace=true

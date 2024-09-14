@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
-  name: replace-resources
+metadata:
+  name: selective-sync
   namespace: argocd
 spec:
   destination:
-    namespace: replace-resources
+    namespace: selective-sync
     server: "https://kubernetes.default.svc"
   project: default
-  source: 
-    path: sync-options/replace
-    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+  source:
+    path: sync-options/selective-sync
+    repoURL: "https://github.com/jagscol/argocd-example-apps.git"
     targetRevision: master
     directory:
       recurse: true
@@ -18,7 +18,4 @@ spec:
     automated: {}
     syncOptions:
       - CreateNamespace=true
-      - Replace=true
-      
-
-    
+      - ApplyOutOfSyncOnly=true

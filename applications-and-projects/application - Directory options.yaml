@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata: 
-  name: sync-phases
+metadata:
+  name: directory-app
   namespace: argocd
 spec:
   destination:
-    namespace: sync-phases
+    namespace: directory-app
     server: "https://kubernetes.default.svc"
   project: default
-  source: 
-    path: sync-phases
-    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+  source:
+    path: guestbook-with-sub-directories
+    repoURL: "https://github.com/jagscol/argocd-example-apps.git"
     targetRevision: master
+    directory:
+      recurse: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-
-    
